@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiSqlite.Mobile.LoginView"
+             Shell.NavBarIsVisible="False"
+             xmlns:viewmodel="clr-namespace:MauiSqlite.Mobile.ViewModels"
+             x:DataType="viewmodel:LoginViewModel"
+             Title="LoginView">
+    <Grid>
+
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0" 
+            VerticalOptions="Center">
+
+            <Image Source="logo1.png" HeightRequest="150" WidthRequest="150" />
+
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Bienvenido!" FontSize="28" TextColor="Gray" HorizontalTextAlignment="Center" />
+                <Label Text="Iniciar Sesion" FontSize="18" TextColor="Gray" HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="56" WidthRequest="56" CornerRadius="28">
+                    <Image Source="user.png" HeightRequest="20" WidthRequest="20" />
+                </Frame>
+                <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White"  HorizontalOptions="FillAndExpand">
+                    <Entry Text="{Binding Email}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="User Name" Keyboard="Email" />
+                </Frame>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="56" WidthRequest="56" CornerRadius="28">
+                    <Image Source="lock.png" HeightRequest="20" WidthRequest="20" />
+                </Frame>
+                <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White"  HorizontalOptions="FillAndExpand">
+                    <Entry Text="{Binding Password}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Password" IsPassword="True" />
+                </Frame>
+            </StackLayout>
+
+            <Button Text="Iniciar Sesion" CornerRadius="20" HorizontalOptions="Center" Command="{Binding LoginCommand}" />
+
+        </VerticalStackLayout>
+        
+        <Grid Opacity="0.8"
+            BackgroundColor="#100F1F"
+            IsVisible="{Binding LoadingEsVisible}">
+            <ActivityIndicator
+                IsRunning="{Binding LoadingEsVisible}"
+                HorizontalOptions="Center"
+                HeightRequest="60"
+                WidthRequest="60"/>
+        </Grid>
+    </Grid>
+</ContentPage>

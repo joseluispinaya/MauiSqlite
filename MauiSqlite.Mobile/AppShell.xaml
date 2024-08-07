@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiSqlite.Mobile.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiSqlite.Mobile"
+    xmlns:views="clr-namespace:MauiSqlite.Mobile.Views"
+    Shell.TabBarIsVisible="False"
+    Title="MauiSqlite.Mobile">
+
+    <ShellContent FlyoutItemIsVisible="False" Shell.FlyoutBehavior="Disabled"
+        ContentTemplate="{DataTemplate views:LoadingView}" Route="LoadingView" />
+
+    <ShellContent
+        Title="Login Page" FlyoutItemIsVisible="False" Shell.FlyoutBehavior="Disabled"
+        ContentTemplate="{DataTemplate local:LoginView}"
+        Route="LoginView" />
+
+    <FlyoutItem Route="InicioView" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+        Title="Inicio" Icon="team.png"
+        ContentTemplate="{DataTemplate views:InicioView}"/>
+
+        <ShellContent
+        Title="Afiliado" Icon="lista.png"
+        ContentTemplate="{DataTemplate views:AfiliadoView}"/>
+
+    </FlyoutItem>
+
+    <Shell.FlyoutFooter>
+        <StackLayout Padding="20">
+            <Button Text="Salir" Command="{Binding SignOutCommand}" />
+        </StackLayout>
+    </Shell.FlyoutFooter>
+
+</Shell>
